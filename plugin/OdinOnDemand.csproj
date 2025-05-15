@@ -3,10 +3,10 @@
     <PropertyGroup>
         <LangVersion>8</LangVersion>
     </PropertyGroup>
-    <Import Project="..\packages\Costura.Fody.5.8.0-alpha0098\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.8.0-alpha0098\build\Costura.Fody.props')" />
-    <Import Project="..\packages\JotunnLib.2.10.0\build\JotunnLib.props" Condition="Exists('..\packages\JotunnLib.2.10.0\build\JotunnLib.props')" />
-    <Import Project="..\packages\Costura.Fody.5.0.2\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.0.2\build\Costura.Fody.props')" />
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <Import Project="../packages/Costura.Fody.5.8.0-alpha0098/build/Costura.Fody.props" Condition="Exists('../packages/Costura.Fody.5.8.0-alpha0098/build/Costura.Fody.props')" />
+    <Import Project="../packages/JotunnLib.2.10.0/build/JotunnLib.props" Condition="Exists('../packages/JotunnLib.2.10.0/build/JotunnLib.props')" />
+    <Import Project="../packages/Costura.Fody.5.0.2/build/Costura.Fody.props" Condition="Exists('../packages/Costura.Fody.5.0.2/build/Costura.Fody.props')" />
+    <Import Project="$(MSBuildExtensionsPath)/$(MSBuildToolsVersion)/Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)/$(MSBuildToolsVersion)/Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -26,7 +26,7 @@
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
+        <OutputPath>bin/Debug/</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
@@ -36,7 +36,7 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
+        <OutputPath>bin/Release/</OutputPath>
         <DefineConstants>
         </DefineConstants>
         <ErrorReport>prompt</ErrorReport>
@@ -44,57 +44,61 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <Prefer32Bit>false</Prefer32Bit>
     </PropertyGroup>
+     <ItemGroup>
+    <PackageReference Include="JotunnLib" Version="2.24.3" />
+  </ItemGroup>
     <ItemGroup>
-        <Compile Include="Components\BeltPlayerComponent.cs" />
-        <Compile Include="Components\CartPlayerComponent.cs" />
-        <Compile Include="Components\MediaPlayerComponent.cs" />
-        <Compile Include="Components\ReceiverComponent.cs" />
-        <Compile Include="Components\RemoteControlItem.cs" />
-        <Compile Include="Components\SpeakerComponent.cs" />
-        <Compile Include="Dynamic\AudioLoader.cs" />
-        <Compile Include="Dynamic\StationManager.cs" />
-        <Compile Include="Interfaces\IPlayer.cs" />
-        <Compile Include="MPlayer\AudioFader.cs" />
-        <Compile Include="MPlayer\RankSystem.cs" />
-        <Compile Include="Patches\HaldorCustomPatch.cs" />
-        <Compile Include="Patches\PlacePiecePatch.cs" />
-        <Compile Include="Patches\RemovePiecePatch.cs" />
-        <Compile Include="MPlayer\BasePlayer.cs" />
-        <Compile Include="MPlayer\PlayerSettings.cs" />
-        <Compile Include="Utils\Config\KeyConfig.cs" />
-        <Compile Include="Utils\Config\OODConfig.cs" />
-        <Compile Include="Utils\Config\PieceConfigDTO.cs" />
-        <Compile Include="Utils\Net\ComponentLists.cs" />
-        <Compile Include="Utils\Net\Explode\Async.cs" />
-    <Compile Include="Utils\Net\Explode\DLSharp.cs" />
-        <Compile Include="Utils\Net\Explode\UrlGrab.cs" />
-        <Compile Include="Utils\Net\RpcHandler.cs" />
-        <Compile Include="Utils\UI\AudioWaveformVisualizer.cs" />
-        <Compile Include="Utils\UI\LoadingCircle.cs" />
-        <Compile Include="Utils\UI\ScrollingText.cs" />
-        <Compile Include="Utils\UI\UIController.cs" />
-        <Compile Include="Properties\IgnoreAccessModifiers.cs" />
+        <Compile Include="Components/BeltPlayerComponent.cs" />
+        <Compile Include="Components/CartPlayerComponent.cs" />
+        <Compile Include="Components/MediaPlayerComponent.cs" />
+        <Compile Include="Components/ReceiverComponent.cs" />
+        <Compile Include="Components/RemoteControlItem.cs" />
+        <Compile Include="Components/SpeakerComponent.cs" />
+        <Compile Include="Dynamic/AudioLoader.cs" />
+        <Compile Include="Dynamic/StationManager.cs" />
+        <Compile Include="Interfaces/IPlayer.cs" />
+        <Compile Include="MPlayer/AudioFader.cs" />
+        <Compile Include="MPlayer/RankSystem.cs" />
+        <Compile Include="Patches/HaldorCustomPatch.cs" />
+        <Compile Include="Patches/PlacePiecePatch.cs" />
+        <Compile Include="Patches/RemovePiecePatch.cs" />
+        <Compile Include="MPlayer/BasePlayer.cs" />
+        <Compile Include="MPlayer/PlayerSettings.cs" />
+        <Compile Include="Utils/Config/KeyConfig.cs" />
+        <Compile Include="Utils/Config/OODConfig.cs" />
+        <Compile Include="Utils/Config/PieceConfigDTO.cs" />
+        <Compile Include="Utils/Net/ComponentLists.cs" />
+        <Compile Include="Utils/Net/Explode/Async.cs" />
+    <Compile Include="Utils/Net/Explode/DLSharp.cs" />
+        <Compile Include="Utils/Net/Explode/UrlGrab.cs" />
+        <Compile Include="Utils/Net/RpcHandler.cs" />
+        <Compile Include="Utils/UI/AudioWaveformVisualizer.cs" />
+        <Compile Include="Utils/UI/LoadingCircle.cs" />
+        <Compile Include="Utils/UI/ScrollingText.cs" />
+        <Compile Include="Utils/UI/UIController.cs" />
+        <Compile Include="Properties/IgnoreAccessModifiers.cs" />
         <Compile Include="OdinOnDemandPlugin.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Properties/AssemblyInfo.cs" />
   </ItemGroup>
     <ItemGroup>
         <None Include="app.config" />
         <None Include="packages.config" />
     </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\videoplayers" />
+    <EmbeddedResource Include="Assets/videoplayers" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\default.json" />
+    <EmbeddedResource Include="Assets/default.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\README.md">
+    <Content Include="../README.md">
       <Link>README.md</Link>
     </Content>
-    <EmbeddedResource Include="Assets\default_items.json" />
+    <EmbeddedResource Include="Assets/default_items.json" />
     <Content Include="publish.ps1" />
   </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="JotunnLib" Version="2.24.3" />
         <Reference Include="0Harmony">
         </Reference>
         <Reference Include="AngleSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
@@ -103,14 +107,19 @@
             <SpecificVersion>False</SpecificVersion>
         </Reference>
         <Reference Include="assembly_postprocessing">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/assembly_postprocessing.dll</HintPath>
         </Reference>
         <Reference Include="assembly_simplemeshcombine">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/assembly_simplemeshcombine.dll</HintPath>
         </Reference>
         <Reference Include="assembly_steamworks">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/assembly_steamworks.dll</HintPath>
         </Reference>
         <Reference Include="assembly_utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/assembly_utils.dll</HintPath>
         </Reference>
         <Reference Include="assembly_valheim">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/assembly_valheim.dll</HintPath>
         </Reference>
         <Reference Include="BepInEx">
         </Reference>
@@ -248,147 +257,417 @@
             <Private>True</Private>
             <Private>True</Private>
         </Reference>
-        <Reference Include="UnityEngine">
-        </Reference>
         <Reference Include="UnityEngine.AccessibilityModule">
-        </Reference>
-        <Reference Include="UnityEngine.AIModule">
-        </Reference>
-        <Reference Include="UnityEngine.AndroidJNIModule">
-        </Reference>
-        <Reference Include="UnityEngine.AnimationModule">
-        </Reference>
-        <Reference Include="UnityEngine.ARModule">
-        </Reference>
-        <Reference Include="UnityEngine.AssetBundleModule">
-        </Reference>
-        <Reference Include="UnityEngine.AudioModule">
-        </Reference>
-        <Reference Include="UnityEngine.ClothModule">
-        </Reference>
-        <Reference Include="UnityEngine.ClusterInputModule">
-        </Reference>
-        <Reference Include="UnityEngine.ClusterRendererModule">
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule">
-        </Reference>
-        <Reference Include="UnityEngine.CrashReportingModule">
-        </Reference>
-        <Reference Include="UnityEngine.DirectorModule">
-        </Reference>
-        <Reference Include="UnityEngine.DSPGraphModule">
-        </Reference>
-        <Reference Include="UnityEngine.GameCenterModule">
-        </Reference>
-        <Reference Include="UnityEngine.GIModule">
-        </Reference>
-        <Reference Include="UnityEngine.GridModule">
-        </Reference>
-        <Reference Include="UnityEngine.HotReloadModule">
-        </Reference>
-        <Reference Include="UnityEngine.ImageConversionModule">
-        </Reference>
-        <Reference Include="UnityEngine.IMGUIModule">
-        </Reference>
-        <Reference Include="UnityEngine.InputLegacyModule">
-        </Reference>
-        <Reference Include="UnityEngine.InputModule">
-        </Reference>
-        <Reference Include="UnityEngine.JSONSerializeModule">
-        </Reference>
-        <Reference Include="UnityEngine.LocalizationModule">
-        </Reference>
-        <Reference Include="UnityEngine.ParticleSystemModule">
-        </Reference>
-        <Reference Include="UnityEngine.PerformanceReportingModule">
-        </Reference>
-        <Reference Include="UnityEngine.Physics2DModule">
-        </Reference>
-        <Reference Include="UnityEngine.PhysicsModule">
-        </Reference>
-        <Reference Include="UnityEngine.ProfilerModule">
-        </Reference>
-        <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
-        </Reference>
-        <Reference Include="UnityEngine.ScreenCaptureModule">
-        </Reference>
-        <Reference Include="UnityEngine.SharedInternalsModule">
-        </Reference>
-        <Reference Include="UnityEngine.SpriteMaskModule">
-        </Reference>
-        <Reference Include="UnityEngine.SpriteShapeModule">
-        </Reference>
-        <Reference Include="UnityEngine.StreamingModule">
-        </Reference>
-        <Reference Include="UnityEngine.SubstanceModule">
-        </Reference>
-        <Reference Include="UnityEngine.SubsystemsModule">
-        </Reference>
-        <Reference Include="UnityEngine.TerrainModule">
-        </Reference>
-        <Reference Include="UnityEngine.TerrainPhysicsModule">
-        </Reference>
-        <Reference Include="UnityEngine.TextCoreModule">
-        </Reference>
-        <Reference Include="UnityEngine.TextRenderingModule">
-        </Reference>
-        <Reference Include="UnityEngine.TilemapModule">
-        </Reference>
-        <Reference Include="UnityEngine.TLSModule">
-        </Reference>
-        <Reference Include="UnityEngine.UI">
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsModule">
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsNativeModule">
-        </Reference>
-        <Reference Include="UnityEngine.UIModule">
-        </Reference>
-        <Reference Include="UnityEngine.UmbraModule">
-        </Reference>
-        <Reference Include="UnityEngine.UNETModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityAnalyticsModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityConnectModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityCurlModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityTestProtocolModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-        </Reference>
-        <Reference Include="UnityEngine.VehiclesModule">
-        </Reference>
-        <Reference Include="UnityEngine.VFXModule">
-        </Reference>
-        <Reference Include="UnityEngine.VideoModule">
-        </Reference>
-        <Reference Include="UnityEngine.VirtualTexturingModule">
-        </Reference>
-        <Reference Include="UnityEngine.VRModule">
-        </Reference>
-        <Reference Include="UnityEngine.WindModule">
-        </Reference>
-        <Reference Include="UnityEngine.XRModule">
-        </Reference>
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AccessibilityModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.AIModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AIModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.AndroidJNIModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AndroidJNIModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.AnimationModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AnimationModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ARModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ARModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.AssetBundleModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.AudioModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AudioModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ClothModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ClothModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ClusterInputModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ClusterInputModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ClusterRendererModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ClusterRendererModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.CoreModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.CrashReportingModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.CrashReportingModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.DirectorModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.DirectorModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.DSPGraphModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.DSPGraphModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.GameCenterModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.GameCenterModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.GIModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.GIModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.GridModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.GridModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.HotReloadModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.HotReloadModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ImageConversionModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.IMGUIModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.InputLegacyModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.InputModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.InputModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.JSONSerializeModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.LocalizationModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.LocalizationModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ParticleSystemModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.PerformanceReportingModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.PerformanceReportingModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.Physics2DModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.Physics2DModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.PhysicsModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ProfilerModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ProfilerModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.ScreenCaptureModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.SharedInternalsModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.SharedInternalsModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.SpriteMaskModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.SpriteMaskModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.SpriteShapeModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.SpriteShapeModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.StreamingModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.StreamingModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.SubstanceModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.SubstanceModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.SubsystemsModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.SubsystemsModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.TerrainModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.TerrainModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.TerrainPhysicsModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.TextCoreModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.TextCoreModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.TextRenderingModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>        
+</Reference>
+<Reference Include="UnityEngine.TilemapModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.TilemapModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.TLSModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.TLSModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UI">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UI.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UIElementsModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UIElementsModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UIElementsNativeModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UIElementsNativeModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UIModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UIModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UmbraModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UmbraModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UNETModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UNETModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityAnalyticsModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityConnectModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityConnectModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityCurlModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityCurlModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityTestProtocolModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityTestProtocolModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityWebRequestAudioModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityWebRequestModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityWebRequestTextureModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.UnityWebRequestWWWModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.VehiclesModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VehiclesModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.VFXModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VFXModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.VideoModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VideoModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.VirtualTexturingModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VirtualTexturingModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.VRModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VRModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.WindModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.WindModule.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.XRModule">
+    <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.XRModule.dll</HintPath>
+</Reference>
         <Reference Include="YoutubeExplode">
         </Reference>
+        <Reference Include="BepInEx">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/core/BepInEx.dll</HintPath>
+        </Reference>
+          <Reference Include="HarmonyLib">
+         <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/core//0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="BepInEx.Preloader">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/core/BepInEx.Preloader.dll</HintPath>
+        </Reference>
+          <Reference Include="Jotunn">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValheimModding-Jotunn/Jotunn.dll</HintPath>
+        </Reference>
+         <Reference Include="UnityEngine">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.dll</HintPath>
+         </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AudioModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VideoModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VideoModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VehiclesModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VehiclesModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VFXModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VFXModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.VideoModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.VideoModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+        </Reference>
+        <Reference Include="OdinOnDemandPlugin">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValHEIM_RapShip/OdinOnDemand/plugin/obj/Debug/OdinOnDemandPlugin.dlll</HintPath>
+        </Reference>
+        <Reference Include="AngleSharp">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/AngleSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+        </Reference>
+        <Reference Include="SoundCloudExplode">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/SoundCloudExplode.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Buffers">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Buffers.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Memory">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Memory.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Numerics.Vectors">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Numerics.Vectors.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Encodings.Web">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Text.Encodings.Web.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Json">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Text.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Threading.Tasks.Extensions">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.Threading.Tasks.Extensions.dll</HintPath>
+        </Reference>
+         <Reference Include="System.ValueTuple">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/System.ValueTuple.dll</HintPath>
+        </Reference>
+         <Reference Include="YoutubeDLSharp">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/YoutubeDLSharp.dll</HintPath>
+        </Reference>
+         <Reference Include="YoutubeExplode">
+        <HintPath>D:/ModMan/Valheim/profiles/Valheim_OVER_MOD/BepInEx/plugins/ValMedia-OOD_LIB/YoutubeExplode.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AssetBundleModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AnimationModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.AnimationModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ParticleSystemModule">
+        <HintPath>D:/Steam/steamapps/common/Valheim/valheim_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
+        </Reference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="AngleSharp" Version="1.0.7" />
     </ItemGroup>
+
+    <ItemGroup>
+    <PackageReference Include="JotunnLib" Version="2.24.3" />
+  </ItemGroup>
+
+
+     <Target Name="CopyToUnity">
+    <Message Text="Copy assemblies to Unity" Importance="high" />
+    <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/BepInEx.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/0Harmony.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/Mono.Cecil.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/MonoMod.Utils.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_INSTALL)/BepInEx/core/MonoMod.RuntimeDetour.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(TargetDir)Jotunn.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).dll.mdb" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/Assembly-CSharp.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_valheim.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_utils.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_postprocessing.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_sunshafts.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_guiutils.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_lux.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_simplemeshcombine.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/assembly_googleanalytics.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/PlayFab.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/PlayFabParty.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/Splatform.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/Splatform.Steam.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/gui_framework.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/com.rlabrecque.steamworks.net.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+    <Copy SourceFiles="$(VALHEIM_MANAGED)/SoftReferenceableAssets.dll" DestinationFolder="$(UNITY_FOLDER)/Assets/Assemblies" />
+  </Target>
+
+    
+  
     <PropertyGroup>
-        <MOD_DEPLOYPATH Condition="!Exists('$(MOD_DEPLOYPATH)')">F:\SteamLibrary\steamapps\common\Valheim\BepInEx\plugins</MOD_DEPLOYPATH>
+        <MOD_DEPLOYPATH Condition="!Exists('$(MOD_DEPLOYPATH)')">D:/SteamLibrary/steamapps/common/Valheim/BepInEx/plugins</MOD_DEPLOYPATH>
     </PropertyGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets" />
     <Target Name="JotunnPostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'">
-        <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(SolutionDir)publish.ps1&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('\'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -ValheimPath &quot;F:\SteamLibrary\steamapps\common\Valheim&quot; -DeployPath &quot;$(MOD_DEPLOYPATH.TrimEnd('\'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('\'))&quot; " />
+        <Exec Command="powershell.exe -ExecutionPolicy RemoteSigned -File &quot;$(SolutionDir)publish.ps1&quot; -Target &quot;$(ConfigurationName)&quot; -TargetPath &quot;$(TargetDir.TrimEnd('/'))&quot; -TargetAssembly &quot;$(TargetFileName)&quot; -ValheimPath &quot;D:/SteamLibrary/steamapps/common/Valheim&quot; -DeployPath &quot;$(MOD_DEPLOYPATH.TrimEnd('/'))&quot; -ProjectPath &quot;$(ProjectDir.TrimEnd('/'))&quot; " />
     </Target>
     <PropertyGroup>
         <BuildDependsOn>

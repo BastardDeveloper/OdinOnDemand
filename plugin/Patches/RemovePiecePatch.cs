@@ -5,7 +5,6 @@ using OdinOnDemand.Utils;
 using OdinOnDemand.Utils.Config;
 using UnityEngine;
 using Logger = Jotunn.Logger;
-
 namespace OdinOnDemand.Patches
 {
     [HarmonyPatch(typeof(Player), "RemovePiece")]

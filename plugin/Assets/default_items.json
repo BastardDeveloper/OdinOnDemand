@@ -4,13 +4,10 @@
     "CraftingStation": "piece_workbench",
     "Requirements": [
       {
-        "Item": "Bronze",
-        "Amount": 2
-      },
-      {
-        "Item": "GreydwarfEye",
+        "Item": "Wood",
         "Amount": 1
-      }]
+      }
+    ]
   },
   {
     "Name": "$item_skaldsgirdle",
@@ -19,6 +16,7 @@
       {
         "Item": "SwordCheat",
         "Amount": 1
-      }]
+      }
+    ]
   }
 ]

@@ -22,37 +22,23 @@ namespace OdinOnDemand.Components
 
         private void Update()
         {
-            if (!localPlayer || ZInput.instance == null) return;
-            
-            if (KeyConfig.UseRemoteButton == null || MessageHud.instance == null ||
-                Player.m_localPlayer == null || Player.m_localPlayer.m_visEquipment.m_rightItem != "remotecontrol" ||
-                !transform.parent.name.Contains("RightHand")) return;
-            
-            if (transform.GetComponentInParent<Player>().GetPlayerID() != localPlayer.GetPlayerID()) return;
-            if (mp != null)
-            {
-                if (mp.PlayerSettings.IsGuiActive) return;
-                mp = null;
-            }
-            
-            if (ZInput.GetButtonDown(KeyConfig.UseRemoteButton.Name))
-            {
-                if(!ProcessRaycast()) 
-                    CheckUtilityItem();
-            }
-            
-            if (KeyConfig.LinkRemoteButton == null) return;
-            if (ZInput.GetButtonDown(KeyConfig.LinkRemoteButton.Name))
-            {
-                ProcessRaycastSpeaker();
-            }
-           
+          if (ZInput.GetButtonDown(KeyConfig.UseRemoteButton.Name))
+    {
+        if (!ProcessRaycast())
+            CheckUtilityItem();
         }
+
+        if (ZInput.GetButtonDown(KeyConfig.LinkRemoteButton.Name))
+        {
+            ProcessRaycastSpeaker();
+        }
+}
 
         private bool ProcessRaycastSpeaker()
         {
+            int solidRayMask = LayerMask.GetMask("piece", "Default", "terrain", "static_solid", "Default_small", "vehicle", "item");
             if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out var hit,
-                    OODConfig.RemoteControlDistance.Value, BaseAI.m_solidRayMask)) return false;
+                OODConfig.RemoteControlDistance.Value, solidRayMask)) return false;
 
             var basePlayerComponent = hit.transform.gameObject.GetComponentInParent<BasePlayer>();
             if (basePlayerComponent != null)
@@ -90,11 +76,15 @@ namespace OdinOnDemand.Components
             }
             return false;
         }
+        private static readonly LayerMask SolidRayMask = LayerMask.GetMask("Default", "piece", "terrain", "static_solid", "Default_small", "character", "vehicle");
+
         
         private bool ProcessRaycast()
         {
+            
             if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out var hit,
-                    OODConfig.RemoteControlDistance.Value, BaseAI.m_solidRayMask)) return false;
+        OODConfig.RemoteControlDistance.Value, SolidRayMask)) return false;
+
 
             var basePlayerComponent = hit.collider.transform.gameObject.GetComponentInParent<BasePlayer>();
             
@@ -173,10 +163,30 @@ namespace OdinOnDemand.Components
 
         private void CheckUtilityItem()
         {
-            if (localPlayer.m_utilityItem == null) return;
-            if (!localPlayer.m_utilityItem.m_shared.m_name.Contains("skaldsgirdle")) return;
-            
-            localPlayer.GetComponentInChildren<BeltPlayerComponent>().UIController.ToggleMainPanel();
+            if (localPlayer == null) return;
+
+    // Припускаємо, що m_visEquipment містить доступ до елементів обладнання
+    var equipment = localPlayer.GetComponent<VisEquipment>(); // Замінити на правильний клас, якщо такий є
+
+    if (equipment == null) return;
+
+    // Перевіряємо праву руку або інше місце для конкретного предмета
+    var rightHandItem = equipment.m_rightHand; // Це лише приклад, якщо такий метод є
+
+    if (rightHandItem != null)
+    {
+        // Дія, якщо предмет в правій руці
+        MessageHud.instance.ShowMessage(MessageHud.MessageType.TopLeft, "Remote Control is in the right hand.");
+    }
+    else
+    {
+        // Дія, якщо предмет не в правій руці
+        MessageHud.instance.ShowMessage(MessageHud.MessageType.TopLeft, "Remote Control is not in the right hand.");
+    }
+    {
+        // Дія, якщо предмет в правій руці
+        MessageHud.instance.ShowMessage(MessageHud.MessageType.TopLeft, "Remote Control is in the right hand.");
+    }
         }
     }
 }

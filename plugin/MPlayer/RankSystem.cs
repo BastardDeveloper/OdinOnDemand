@@ -14,19 +14,19 @@ namespace OdinOnDemand.Utils
         private static CoroutineManager _coroutineManager;
         private static Coroutine _blockMenuCoroutine;
 
-        public static PlayerRank GetRank()
-        {
-            var user = UserInfo.GetLocalUser();
+        // public static PlayerRank GetRank()
+        // {
+        //     var user = UserInfo.GetLocalUser();
 
-            if (ZNet.instance.ListContainsId(ZNet.instance.m_adminList, user.UserId.m_userID))
-            {
-                return PlayerRank.Admin;
-            } else if (OODConfig.VipList.Value.Contains(user.UserId.m_userID))
-            {
-                return PlayerRank.Vip;
-            }
-            return PlayerRank.Player;
-        }
+        //     if (ZNet.instance.ListContainsId(ZNet.instance.m_adminList, user.UserId.m_userID))
+        //     {
+        //         return PlayerRank.Admin;
+        //     } else if (OODConfig.VipList.Value.Contains(user.UserId.m_userID))
+        //     {
+        //         return PlayerRank.Vip;
+        //     }
+        //     return PlayerRank.Player;
+        // }
 
         private static void CreateBlockMenu()
         {

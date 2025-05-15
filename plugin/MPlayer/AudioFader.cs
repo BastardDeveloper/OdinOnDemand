@@ -27,36 +27,40 @@ namespace OdinOnDemand.Utils
 
         public AudioFader()
         {
-            _musicMan = MusicMan.m_instance;
+            // _musicMan = MusicMan.m_instance;
         }
 
-        public void Update()
-        {
-            if (OODConfig.AudioFadeType.Value == OODConfig.FadeType.Fade)
-            {
-                FadeGameMusic();
-            }
-        }
+        // public void Update()
+        // {
+        //     if (OODConfig.AudioFadeType.Value == OODConfig.FadeType.Fade)
+        //     {
+        //         FadeGameMusic();
+        //     }
+        // }
 
-        public void FadeGameMusic()
-        {
-            var (distance, closestMediaPlayer) = GetDistanceFromMediaplayers();
-            if (closestMediaPlayer == null)
-            {
-                _musicMan.m_musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-                return;
-            }
-            var maxDistance = closestMediaPlayer.mAudio.maxDistance / 1.35f;
-            if(distance > maxDistance)
-            {
-                _musicMan.m_musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-                return;
-            }
-            float normalizedDistance = Mathf.Clamp01(distance / maxDistance);
-            float currentVolumeDb = 20 * Mathf.Log10(_musicMan.m_musicSource.volume);
-            float volumeDb = Mathf.Lerp(OODConfig.LowestVolumeDB.Value, currentVolumeDb, normalizedDistance);
-            _musicMan.m_musicSource.volume = Mathf.Pow(10.0f, volumeDb / 20.0f);
-        }
+        // public void FadeGameMusic()
+        // {
+        //     var (distance, closestMediaPlayer) = GetDistanceFromMediaplayers();
+        //     if (closestMediaPlayer == null)
+        //     {
+        //         if (_musicMan.m_musicSource.volume != PlayerPrefs.GetFloat("MusicVolume", 1f))
+        //         {
+        //             _musicMan.m_musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        //         }
+        //         _musicMan.m_musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        //         return;
+        //     }
+        //     var maxDistance = closestMediaPlayer.mAudio.maxDistance / 1.35f;
+        //     if(distance > maxDistance)
+        //     {
+        //         _musicMan.m_musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        //         return;
+        //     }
+        //     float normalizedDistance = Mathf.Clamp01(distance / maxDistance);
+        //     float currentVolumeDb = 20 * Mathf.Log10(_musicMan.m_musicSource.volume);
+        //     float volumeDb = Mathf.Lerp(OODConfig.LowestVolumeDB.Value, currentVolumeDb, normalizedDistance);
+        //     _musicMan.m_musicSource.volume = Mathf.Pow(10.0f, volumeDb / 20.0f);
+        // }
         
         private static (float, BasePlayer) GetDistanceFromMediaplayers()
         {

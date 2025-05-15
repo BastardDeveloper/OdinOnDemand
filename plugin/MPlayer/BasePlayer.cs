@@ -101,7 +101,7 @@ namespace OdinOnDemand.MPlayer
                 {
                     if (!zdo.GetString("MediaPlayerID").Equals(""))
                     {
-                        RequestOwnership(zdo);
+                        // RequestOwnership(zdo);
                         var id = GenerateUniqueID();
                         zdo.Set("MediaPlayerID", id); // Generate unique ID for this media player
                         SendUpdateZDO_RPC();
@@ -1092,7 +1092,7 @@ namespace OdinOnDemand.MPlayer
         {
             var zdo = ZNetView.GetZDO();
             if (zdo == null || mAudio == null) return;
-            RequestOwnership(zdo);
+            // RequestOwnership(zdo);
             zdo.Set("distance", mAudio.maxDistance);
             zdo.Set("adminOnly", PlayerSettings.AdminOnly);
             zdo.Set("isLooping", PlayerSettings.IsLooping);
@@ -1290,21 +1290,21 @@ namespace OdinOnDemand.MPlayer
             zdo.SetOwner(peer);
         }
         
-        public void RequestOwnership(ZDO zdo)
-        {
-            if (zdo == null) return;
-            if (zdo.IsOwner())
-                return;
-            var player = Player.s_players.FirstOrDefault(p => p != null && p.m_nview != null && p.m_nview.IsValid() && p.GetZDOID().UserID == zdo.GetOwner());
-            if (player == null)
-            {
-                ClaimOwnership(zdo);
-                return;
-            }
+        // public void RequestOwnership(ZDO zdo)
+        // {
+        //     if (zdo == null) return;
+        //     if (zdo.IsOwner())
+        //         return;
+        //     var player = Player.s_players.FirstOrDefault(p => p != null && p.m_nview != null && p.m_nview.IsValid() && p.GetZDOID().UserID == zdo.GetOwner());
+        //     if (player == null)
+        //     {
+        //         ClaimOwnership(zdo);
+        //         return;
+        //     }
             
-            RPC.SendData(0, CinemaPackage.RPCDataType.RequestOwnership, PlayerSettings.PlayerType,
-                MediaPlayerID, gameObject.transform.position);
-        }
+        //     RPC.SendData(0, CinemaPackage.RPCDataType.RequestOwnership, PlayerSettings.PlayerType,
+        //         MediaPlayerID, gameObject.transform.position);
+        // }
 
         public bool AddSpeaker(SpeakerComponent sp)
         {

@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "dgSpecHash": "pHjD+2Yfzjs=",
+  "success": true,
+  "projectFilePath": "D:\\Steam\\steamapps\\common\\Valheim\\BepInEx\\plugins\\ValHEIM_RapShip\\OdinOnDemand\\plugin\\OdinOnDemand.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\anglesharp\\1.2.0\\anglesharp.1.2.0.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\jotunnlib\\2.24.3\\jotunnlib.2.24.3.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.1\\system.runtime.compilerservices.unsafe.6.1.1.nupkg.sha512",
+    "C:\\Users\\Dimoshonka\\.nuget\\packages\\system.text.encoding.codepages\\8.0.0\\system.text.encoding.codepages.8.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "OdinOnDemand зависит от AngleSharp (>= 1.0.7), но версия AngleSharp 1.0.7 не найдена. Использовалась версия AngleSharp 1.2.0.",
+      "libraryId": "AngleSharp",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.2",
+        ".NETFramework,Version=v4.6.2/win"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "System.Text.Encoding.CodePages 8.0.0 зависит от System.Runtime.CompilerServices.Unsafe (>= 6.0.0), но версия System.Runtime.CompilerServices.Unsafe 6.0.0 не найдена. Использовалась версия System.Runtime.CompilerServices.Unsafe 6.1.1.",
+      "libraryId": "System.Runtime.CompilerServices.Unsafe",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.2",
+        ".NETFramework,Version=v4.6.2/win"
+      ]
+    }
+  ]
+}

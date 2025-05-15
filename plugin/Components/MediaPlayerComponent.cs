@@ -235,14 +235,14 @@ namespace OdinOnDemand.Components
         {
             if (PlayerSettings.AdminOnly && !SynchronizationManager.Instance.PlayerIsAdmin) return "";
             //TODO: control volume with no access
-            if (OODConfig.VipMode.Value)
-            {
-                var rank = RankSystem.GetRank();
-                if (rank != RankSystem.PlayerRank.Admin && rank != RankSystem.PlayerRank.Vip)
-                {
-                    return Localization.instance.Localize(mName + "\n$piece_noaccess");
-                }
-            }
+            // if (OODConfig.VipMode.Value)
+            // {
+            //     var rank = RankSystem.GetRank();
+            //     if (rank != RankSystem.PlayerRank.Admin && rank != RankSystem.PlayerRank.Vip)
+            //     {
+            //         return Localization.instance.Localize(mName + "\n$piece_noaccess");
+            //     }
+            // }
 
             if (!PrivateArea.CheckAccess(transform.position, 0f, false) && PlayerSettings.IsLocked)
                 return Localization.instance.Localize(mName + "\n$piece_noaccess");
@@ -257,14 +257,14 @@ namespace OdinOnDemand.Components
 
         public bool Interact(Humanoid user, bool hold, bool alt) //Open screen UI
         {
-            if (OODConfig.VipMode.Value)
-            {
-                var rank = RankSystem.GetRank();
-                if (rank != RankSystem.PlayerRank.Admin && rank != RankSystem.PlayerRank.Vip)
-                {
-                    return false;
-                }
-            }
+            // if (OODConfig.VipMode.Value)
+            // {
+            //     var rank = RankSystem.GetRank();
+            //     if (rank != RankSystem.PlayerRank.Admin && rank != RankSystem.PlayerRank.Vip)
+            //     {
+            //         return false;
+            //     }
+            // }
 
             if ((!PrivateArea.CheckAccess(transform.position) && PlayerSettings.IsLocked) ||
                 (PlayerSettings.AdminOnly && !SynchronizationManager.Instance.PlayerIsAdmin)) return false;

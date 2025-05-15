@@ -34,8 +34,8 @@ namespace OdinOnDemand.Utils.Net
         public void SendData(long peer, RPCDataType type, MediaPlayers player = default, string mediaPlayerID = "", Vector3 pos = default, float time = 0, string url = "",
             PlayerStatus status = PlayerStatus.NULL, float volume = 1.0f, bool toggleBool = false)
         {
-            _oodrpc.SendPackage(peer == 0 ? ZRoutedRpc.instance.GetServerPeerID() : peer,
-                new CinemaPackage().Pack(type, player, mediaPlayerID, pos, time, url, status, toggleBool));
+            // _oodrpc.SendPackage(peer == 0 ? ZRoutedRpc.instance.GetServerPeerID() : peer,
+            //     new CinemaPackage().Pack(type, player, mediaPlayerID, pos, time, url, status, toggleBool));
         }
 
         private static void SendStationData(CinemaPackage cinemaPackage)
@@ -113,7 +113,8 @@ namespace OdinOnDemand.Utils.Net
 
         private static void SendPackageToPeersInRange(ZPackage package, Vector3 targetPos, float radius = 128f)
         {
-            var peers = ZNet.instance.m_peers;
+            var peers = ZNet.instance.GetPeers();
+            if (peers == null || peers.Count == 0) return;
             foreach (var peer in peers)
             {
                 Vector2 peerPos = new Vector2(peer.m_refPos.x, peer.m_refPos.z);

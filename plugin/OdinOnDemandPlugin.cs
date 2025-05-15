@@ -52,6 +52,14 @@ namespace OdinOnDemand
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) => {
                 string assemblyName = new AssemblyName(args.Name).Name + ".dll";
                 var resource = Assembly.GetExecutingAssembly().GetManifestResourceNames().FirstOrDefault(r => r.EndsWith(assemblyName));
+                //Jotunn.Logger.LogDebug("Resolving assembly: " + assemblyName);
+                // лог что все запустилось
+                Jotunn.Logger.LogInfo("RapShip has landed");
+                Jotunn.Logger.LogInfo("RapShip has landed");
+                Jotunn.Logger.LogInfo("RapShip has landed");
+                Jotunn.Logger.LogInfo("RapShip has landed");
+
+
 
                 if (resource != null)
                 {
@@ -85,7 +93,7 @@ namespace OdinOnDemand
             //load assets and configure pieces and items
             LoadAssets();
             PrefabManager.OnVanillaPrefabsAvailable += AddCartVariant;
-            
+            PrefabManager.OnVanillaPrefabsAvailable += AddDrakkarWithCart;
             //Key Config
             ConfigFile keyConfig = new ConfigFile(Path.Combine(OdinConfigFolder, "com.ood.valmedia.keyconfig.cfg"), true);
             SynchronizationManager.Instance.RegisterCustomConfig(keyConfig);
@@ -124,6 +132,32 @@ namespace OdinOnDemand
            
             assets.Unload(false);
             PrefabManager.OnVanillaPrefabsAvailable -= AddCartVariant;
+        }
+
+             private static void AddDrakkarWithCart()
+        {
+              var pieceConfig = new PieceConfig();
+            pieceConfig.Name = "Bard's Longship";
+            pieceConfig.Description = "A musical longship with media playback capabilities.";
+            pieceConfig.PieceTable = "Hammer";
+            pieceConfig.Category = "OOD";
+            pieceConfig.AddRequirement(new RequirementConfig("FineWood", 40));
+            pieceConfig.AddRequirement(new RequirementConfig("IronNails", 80));
+            pieceConfig.AddRequirement(new RequirementConfig("DeerHide", 10));
+
+            var assets = AssetUtils.LoadAssetBundleFromResources("videoplayers", typeof(OdinOnDemandPlugin).Assembly);
+            var attach = assets.LoadAsset<GameObject>("assets/cartplayer_attach.prefab");
+            pieceConfig.Icon = assets.LoadAsset<Sprite>("assets/MOD ICONS/cartplayericon.png");
+
+            if (PieceManager.Instance.AddPiece(new CustomPiece("bardlongship", "VikingShip", pieceConfig)))
+            {
+                var longship = PrefabManager.Instance.GetPrefab("bardlongship");
+                Instantiate(attach, longship.transform, true);
+                longship.transform.Find("cartplayer_attach(Clone)").gameObject.AddComponent<CartPlayerComponent>();
+            }
+
+            assets.Unload(false);
+            PrefabManager.OnVanillaPrefabsAvailable -= AddDrakkarWithCart;
         }
 
         private void LoadAssets()

@@ -21,7 +21,7 @@ namespace OdinOnDemand.Patches
             }
             RaycastHit hitInfo;
             if (!Physics.Raycast(GameCamera.instance.transform.position, GameCamera.instance.transform.forward,
-                    out hitInfo, 50f, __instance.m_removeRayMask) ||
+                    out hitInfo, 50f) ||
                 (double)Vector3.Distance(hitInfo.point, __instance.m_eye.position) >= (double)__instance.m_maxPlaceDistance)
             {
                 return false;
@@ -32,16 +32,16 @@ namespace OdinOnDemand.Patches
                 return false;
             }
 
-            if (Pieces.Contains(piece.gameObject.name.Replace("(Clone)","")) && OODConfig.VipMode.Value)
-            {
-                var rank = RankSystem.GetRank();
-                //
-                if (rank != RankSystem.PlayerRank.Admin && rank != RankSystem.PlayerRank.Vip)
-                {
-                    RankSystem.DisplayBlockMenu();
-                    return false;
-                }
-            }
+            // if (Pieces.Contains(piece.gameObject.name.Replace("(Clone)","")) && OODConfig.VipMode.Value)
+            // {
+            //     var rank = RankSystem.GetRank();
+            //     //
+            //     if (rank != RankSystem.PlayerRank.Admin && rank != RankSystem.PlayerRank.Vip)
+            //     {
+            //         RankSystem.DisplayBlockMenu();
+            //         return false;
+            //     }
+            // }
             return true;
         }
     }
